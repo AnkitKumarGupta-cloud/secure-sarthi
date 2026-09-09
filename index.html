@@ -5,10 +5,27 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <title>Secure Sarthi — LIC Insurance Advisor</title>
 <meta name="description" content="Secure Sarthi — Authorized LIC Insurance Advisor. Term, Endowment, Money-Back, Child and Pension plans. Get personalized guidance and a real quote."/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#ffffff"/>
+<link rel="canonical" href="https://securesarthi.example.com/index.html"/>
+<meta property="og:type" content="website"/>
+<meta property="og:title" content="Secure Sarthi — LIC Insurance Advisor"/>
+<meta property="og:description" content="Secure Sarthi — Authorized LIC Insurance Advisor. Term, Endowment, Money-Back, Child and Pension plans. Get personalized guidance and a real quote."/>
+<meta property="og:url" content="https://securesarthi.example.com/index.html"/>
+<meta property="og:image" content="https://securesarthi.example.com/android-chrome-512x512.png"/>
+<meta property="og:site_name" content="Secure Sarthi"/>
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Secure Sarthi — LIC Insurance Advisor"/>
+<meta name="twitter:description" content="Secure Sarthi — Authorized LIC Insurance Advisor. Term, Endowment, Money-Back, Child and Pension plans. Get personalized guidance and a real quote."/>
+<meta name="twitter:image" content="https://securesarthi.example.com/android-chrome-512x512.png"/>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css?v=3"/>
+<link rel="stylesheet" href="css/style.css?v=6"/>
 </head>
 <body>
 
@@ -190,28 +207,28 @@
     </div>
     <div class="faq-list">
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFAQ(this)">
+        <button class="faq-btn" onclick="toggleFAQ(this)" aria-expanded="false">
           <span class="faq-question">Which LIC plan is right for me?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer"><p class="faq-answer-inner">It depends on your goal. If you want maximum life cover at the lowest cost, a term plan fits best. If you want guaranteed savings alongside protection, an endowment plan is more suitable. For a child's future, a child plan with premium waiver is worth considering. Share your situation with me and I'll recommend specific options.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFAQ(this)">
+        <button class="faq-btn" onclick="toggleFAQ(this)" aria-expanded="false">
           <span class="faq-question">How is my premium calculated?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer"><p class="faq-answer-inner">LIC premiums depend on your age, chosen sum assured, policy term, premium payment term, and health status. I'll calculate exact figures with you using LIC's official rate tables once you share these details.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFAQ(this)">
+        <button class="faq-btn" onclick="toggleFAQ(this)" aria-expanded="false">
           <span class="faq-question">Do I need a medical exam?</span>
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer"><p class="faq-answer-inner">This depends on your age and the sum assured you're applying for. Many applicants qualify without a medical exam under LIC's non-medical limits; higher sums assured or older ages may require one. I'll confirm this for your specific case.</p></div>
       </div>
       <div class="faq-item">
-        <button class="faq-btn" onclick="toggleFAQ(this)">
+        <button class="faq-btn" onclick="toggleFAQ(this)" aria-expanded="false">
           <span class="faq-question">Can you help with an existing LIC policy, not just new ones?</span>
           <span class="faq-icon">+</span>
         </button>
@@ -307,12 +324,23 @@ function toggleFAQ(btn) {
   document.querySelectorAll('.faq-item').forEach(el => {
     el.classList.remove('open');
     el.querySelector('.faq-answer').style.maxHeight = '0';
+    el.querySelector('.faq-btn').setAttribute('aria-expanded', 'false');
   });
   if (!isOpen) {
     item.classList.add('open');
     answer.style.maxHeight = answer.scrollHeight + 'px';
+    btn.setAttribute('aria-expanded', 'true');
   }
 }
+
+// Recalculate the open FAQ answer's height on resize so text reflow
+// (e.g. rotating a phone) never clips the visible answer.
+window.addEventListener('resize', () => {
+  const openItem = document.querySelector('.faq-item.open');
+  if (!openItem) return;
+  const answer = openItem.querySelector('.faq-answer');
+  answer.style.maxHeight = answer.scrollHeight + 'px';
+});
 
 document.getElementById('contactForm').addEventListener('submit', function(e) {
   e.preventDefault();
