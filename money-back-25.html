@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css?v=10"/>
+<link rel="stylesheet" href="css/style.css?v=11"/>
 </head>
 <body>
 
@@ -96,6 +96,8 @@
           <p>A good fit if you're planning around a longer horizon — for example, starting this policy when your child is young, with payouts timed to land around key milestones through their schooling and into early adulthood.</p>
         </div>
 
+        <div class="plan-calc" id="plan-calc-root"></div>
+
       </div>
 
       <aside class="plan-detail-sidebar">
@@ -154,5 +156,20 @@
   </div>
 </footer>
 
+<script>
+window.PLAN_CALC_CONFIG = {
+  "type": "endowment",
+  "minAge": 13,
+  "maxAge": 45,
+  "fixedTerms": [
+    25
+  ],
+  "minSA": 100000,
+  "defaultSA": 500000,
+  "bonusRate": 38,
+  "fabRate": 550
+};
+</script>
+<script src="js/plan-calculator.js"></script>
 </body>
 </html>

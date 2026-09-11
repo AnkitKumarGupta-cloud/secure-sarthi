@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css?v=10"/>
+<link rel="stylesheet" href="css/style.css?v=11"/>
 </head>
 <body>
 
@@ -96,6 +96,8 @@
           <p>Worth considering if you want more control over exactly how and when your child's payouts land, rather than accepting a fixed milestone schedule — useful if you already have a rough idea of your child's education timeline.</p>
         </div>
 
+        <div class="plan-calc" id="plan-calc-root"></div>
+
       </div>
 
       <aside class="plan-detail-sidebar">
@@ -154,5 +156,19 @@
   </div>
 </footer>
 
+<script>
+window.PLAN_CALC_CONFIG = {
+  "type": "endowment",
+  "minAge": 0,
+  "maxAge": 12,
+  "minTerm": 13,
+  "maxTerm": 25,
+  "minSA": 100000,
+  "defaultSA": 500000,
+  "bonusRate": 45,
+  "fabRate": 700
+};
+</script>
+<script src="js/plan-calculator.js"></script>
 </body>
 </html>

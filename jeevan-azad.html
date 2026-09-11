@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css?v=10"/>
+<link rel="stylesheet" href="css/style.css?v=11"/>
 </head>
 <body>
 
@@ -96,6 +96,8 @@
           <p>Best suited to someone who wants a small, guaranteed, non-market-linked savings pot with a short premium commitment — not a primary insurance plan, given the ₹5 lakh cap on cover. Often used alongside a separate term plan rather than instead of one.</p>
         </div>
 
+        <div class="plan-calc" id="plan-calc-root"></div>
+
       </div>
 
       <aside class="plan-detail-sidebar">
@@ -154,5 +156,20 @@
   </div>
 </footer>
 
+<script>
+window.PLAN_CALC_CONFIG = {
+  "type": "guaranteed",
+  "minAge": 1,
+  "maxAge": 50,
+  "fixedTerms": [
+    15,
+    20
+  ],
+  "minSA": 200000,
+  "defaultSA": 300000,
+  "guaranteedAdditionRate": 60
+};
+</script>
+<script src="js/plan-calculator.js"></script>
 </body>
 </html>

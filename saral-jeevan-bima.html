@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css?v=10"/>
+<link rel="stylesheet" href="css/style.css?v=11"/>
 </head>
 <body>
 
@@ -96,6 +96,8 @@
           <p>This suits first-time term insurance buyers who want a smaller, simpler cover amount (up to ₹25 lakh) without wading through rider options and fine print — and who value being able to compare LIC's premium directly against other insurers' Saral Jeevan Bima offerings on a like-for-like basis.</p>
         </div>
 
+        <div class="plan-calc" id="plan-calc-root"></div>
+
       </div>
 
       <aside class="plan-detail-sidebar">
@@ -154,5 +156,17 @@
   </div>
 </footer>
 
+<script>
+window.PLAN_CALC_CONFIG = {
+  "type": "term",
+  "minAge": 18,
+  "maxAge": 65,
+  "minTerm": 5,
+  "maxTerm": 40,
+  "minSA": 500000,
+  "defaultSA": 1000000
+};
+</script>
+<script src="js/plan-calculator.js"></script>
 </body>
 </html>

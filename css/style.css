@@ -391,3 +391,42 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
 }
 .contact-direct-link svg { stroke: currentColor; flex-shrink: 0; }
 
+/* ─── PLAN CALCULATOR ─── */
+.plan-calc {
+  background: var(--white); border: 1.5px solid var(--rule); border-radius: 10px;
+  padding: 28px 24px; margin-bottom: 40px;
+}
+.plan-calc h2 {
+  font-family: 'Playfair Display', serif; font-size: 19px; font-weight: 600;
+  color: var(--midnight); margin-bottom: 4px;
+}
+.plan-calc .calc-sub { font-size: 13px; color: var(--stone); margin-bottom: 20px; }
+.calc-fields { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 14px; margin-bottom: 18px; }
+.calc-field label {
+  display: block; font-size: 11px; font-weight: 600; text-transform: uppercase;
+  letter-spacing: 0.05em; color: var(--stone); margin-bottom: 6px;
+}
+.calc-field input, .calc-field select {
+  width: 100%; padding: 11px 12px; font-size: 14.5px; font-family: inherit; color: var(--ink);
+  border: 1.5px solid var(--rule); border-radius: 6px; background: var(--cream);
+  -webkit-appearance: none; appearance: none;
+}
+.calc-field input:focus, .calc-field select:focus { outline: none; border-color: var(--emerald); background: var(--white); }
+.calc-btn {
+  width: 100%; padding: 13px; font-size: 13.5px; font-weight: 600;
+  background: var(--midnight); color: var(--white); border-radius: 6px;
+  transition: background 0.2s;
+}
+.calc-btn:hover { background: var(--emerald); }
+.calc-error {
+  display: none; margin-top: 12px; padding: 10px 14px; border-radius: 6px;
+  background: rgba(185,28,28,0.08); color: #B91C1C; font-size: 13px;
+}
+.calc-error.show { display: block; }
+.calc-result { display: none; margin-top: 20px; padding-top: 20px; border-top: 1px solid var(--rule); }
+.calc-result.show { display: block; }
+.calc-result-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 16px; margin-bottom: 14px; }
+.calc-result-item .calc-result-label { font-size: 11px; color: var(--stone); text-transform: uppercase; letter-spacing: 0.05em; margin-bottom: 4px; }
+.calc-result-item .calc-result-value { font-size: 19px; font-weight: 700; color: var(--emerald); font-family: 'Playfair Display', serif; }
+.calc-disclaimer { font-size: 11.5px; color: var(--stone); line-height: 1.6; }
+
