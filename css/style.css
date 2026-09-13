@@ -103,7 +103,7 @@ nav {
 .btn-hero-ghost:hover { border-color: var(--gold); color: var(--gold); }
 
 /* ─── PHOTO HERO ─── */
-.hero-photo { position: relative; padding: 0; overflow: hidden; min-height: 780px; display: flex; align-items: center; }
+.hero-photo { position: relative; padding: 0; overflow: hidden; min-height: clamp(520px, 92vh, 760px); display: flex; align-items: center; }
 .hero-photo-bg { position: absolute; inset: 0; z-index: 0; }
 .hero-photo-bg img { width: 100%; height: 100%; object-fit: cover; object-position: center bottom; display: block; }
 .hero-photo-overlay {
@@ -143,9 +143,13 @@ nav {
   white-space: nowrap;
 }
 .hero-trust-item svg { width: 22px; height: 22px; stroke: var(--gold); flex-shrink: 0; }
+@media (max-width: 768px) {
+  .hero-photo { min-height: clamp(480px, 88vh, 700px); }
+  .hero-photo-content { padding: 48px 20px 64px; }
+}
 @media (max-width: 480px) {
-  .hero-photo { min-height: 760px; }
-  .hero-photo-content { padding: 56px 20px 72px; }
+  .hero-photo { min-height: 620px; }
+  .hero-photo-content { padding: 56px 20px 40px; }
   .hero-trust-row { gap: 14px; }
   .hero-trust-item { font-size: 10.5px; }
 }
@@ -153,6 +157,13 @@ nav {
   .hero-trust-row { gap: 10px; }
   .hero-trust-item { font-size: 9.5px; }
   .hero-trust-item svg { width: 19px; height: 19px; }
+}
+
+/* ─── NAV RESPONSIVE ─── */
+@media (max-width: 420px) {
+  .nav-inner > div { gap: 8px; }
+  .nav-inner .btn-outline, .nav-inner .btn-primary { padding: 9px 14px; font-size: 10px; }
+  .nav-logo-img { height: 34px; }
 }
 
 /* ─── SECTION HEADER ─── */
@@ -519,12 +530,12 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
 /* ─── STAGE TILES (Plan for Every Stage of Life) ─── */
 .stage-tiles { display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin: 0 auto; }
 .stage-tile {
-  display: flex; align-items: stretch; gap: 16px;
+  display: flex; align-items: center; gap: 16px;
   background: var(--white); border: 1.5px solid var(--rule); border-radius: 12px;
   overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .stage-tile:hover { border-color: var(--emerald); box-shadow: 0 8px 22px rgba(13,27,42,0.08); transform: translateY(-2px); }
-.stage-tile-img { width: 88px; flex-shrink: 0; }
+.stage-tile-img { width: 88px; aspect-ratio: 1 / 1; flex-shrink: 0; }
 .stage-tile-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .stage-tile-body { display: flex; align-items: center; gap: 14px; padding: 14px 18px 14px 0; flex: 1; min-width: 0; }
 .stage-tile-icon {
@@ -537,7 +548,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
 .stage-tile-body p { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 4px; }
 .stage-tile-link { font-size: 12px; font-weight: 600; color: var(--emerald); }
 @media (max-width: 420px) {
-  .stage-tile-img { width: 72px; }
+  .stage-tile-img { width: 72px; aspect-ratio: 1 / 1; }
   .stage-tile-body { padding: 12px 14px 12px 0; gap: 10px; }
 }
 
