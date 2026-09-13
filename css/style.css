@@ -539,12 +539,12 @@ footer > .container { position: relative; z-index: 1; }
 /* ─── STAGE TILES (Plan for Every Stage of Life) ─── */
 .stage-tiles { display: flex; flex-direction: column; gap: 14px; max-width: 640px; margin: 0 auto; }
 .stage-tile {
-  display: flex; align-items: center; gap: 16px;
+  display: flex; align-items: stretch; gap: 16px;
   background: var(--white); border: 1.5px solid var(--rule); border-radius: 12px;
   overflow: hidden; transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
 }
 .stage-tile:hover { border-color: var(--emerald); box-shadow: 0 8px 22px rgba(13,27,42,0.08); transform: translateY(-2px); }
-.stage-tile-img { width: 88px; aspect-ratio: 1 / 1; flex-shrink: 0; }
+.stage-tile-img { width: 88px; min-height: 88px; flex-shrink: 0; }
 .stage-tile-img img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .stage-tile-body { display: flex; align-items: center; gap: 14px; padding: 14px 18px 14px 0; flex: 1; min-width: 0; }
 .stage-tile-icon {
@@ -557,7 +557,7 @@ footer > .container { position: relative; z-index: 1; }
 .stage-tile-body p { font-size: 12.5px; color: var(--ink-soft); margin-bottom: 4px; }
 .stage-tile-link { font-size: 12px; font-weight: 600; color: var(--emerald); }
 @media (max-width: 420px) {
-  .stage-tile-img { width: 72px; aspect-ratio: 1 / 1; }
+  .stage-tile-img { width: 72px; min-height: 72px; }
   .stage-tile-body { padding: 12px 14px 12px 0; gap: 10px; }
 }
 
