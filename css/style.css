@@ -348,10 +348,13 @@ footer > .container { position: relative; z-index: 1; }
 /* ─── WAVE TRANSITION ─── */
 .section-wave-top {
   display: block; line-height: 0;
-  background: var(--midnight); /* colour behind the wave = hero bg */
+  background: var(--midnight); /* colour of section ABOVE the wave */
   margin-bottom: -2px; /* close any sub-pixel gap */
 }
 .section-wave-top svg { width: 100%; height: auto; display: block; }
+.section-wave-top.wave-to-white { background: var(--midnight); }
+.section-wave-top.wave-to-midnight { background: var(--white); }
+.section-wave-top.wave-flip svg { transform: scaleX(-1); }
 
 /* ─── ABOUT NEW ─── */
 .about-new {
