@@ -219,4 +219,14 @@
   } else {
     render();
   }
+
+  // Exposed so pages with a plan-picker (e.g. calculator.html) can
+  // update window.PLAN_CALC_CONFIG and re-render without a page reload.
+  window.SecureSarthiCalc = {
+    rerender: function (newCfg) {
+      cfg = newCfg;
+      window.PLAN_CALC_CONFIG = newCfg;
+      render();
+    }
+  };
 })();

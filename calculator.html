@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Premium Calculator — Secure Sarthi</title>
+<meta name="description" content="Pick any LIC plan and get an instant, approximate premium or maturity estimate — free, no sign-up, in seconds."/>
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png"/>
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"/>
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"/>
+<link rel="manifest" href="/site.webmanifest"/>
+<meta name="theme-color" content="#ffffff"/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="css/style.css?v=29"/>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="nav-logo"><img src="logo.png" alt="Secure Sarthi" class="nav-logo-img"/></a>
+    <div style="display:flex;gap:12px;align-items:center;">
+      <a href="index.html#plans" class="btn-outline" style="padding:10px 20px;font-size:11px;">All Plans</a>
+      <a href="index.html#contact" class="btn-primary">Get in Touch</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── BREADCRUMB ── -->
+<div class="container breadcrumb">
+  <a href="index.html">Home</a><span class="sep">/</span><span class="current">Premium Calculator</span>
+</div>
+
+<!-- ── PAGE HERO ── -->
+<div class="plan-detail-hero">
+  <div class="container">
+    <span class="card-tag">Free &amp; Instant</span>
+    <h1>Premium Calculator</h1>
+    <p class="plan-detail-summary">Pick any LIC plan below and get an approximate premium or maturity estimate in seconds — no sign-up, no phone number needed.</p>
+  </div>
+</div>
+
+<!-- ── CALCULATOR ── -->
+<div class="container" style="padding:56px 24px 80px;">
+  <div class="plan-detail-block" style="max-width:640px;margin:0 auto;">
+
+    <div class="calc-field" style="margin-bottom:28px;">
+      <label for="plan-picker">Choose a Plan</label>
+      <select id="plan-picker"></select>
+    </div>
+
+    <div class="plan-calc" id="plan-calc-root"></div>
+
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <img src="logo.png" alt="Secure Sarthi" class="footer-logo-img"/>
+      <div class="footer-contact">
+        <a href="mailto:SecureSarthi@gmail.com" class="footer-contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 7 10-7"/></svg>
+          SecureSarthi@gmail.com
+        </a>
+        <a href="tel:+918660813472" class="footer-contact-link">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.8a19.79 19.79 0 01-3.07-8.68A2 2 0 012 .82h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 8.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          +91 86608 13472
+        </a>
+      </div>
+      <p>Secure Sarthi — Independent LIC Insurance Advisory. Not an official LIC platform.</p>
+    </div>
+  </div>
+</footer>
+
+<script>
+// One config entry per plan page — mirrors each page's own
+// window.PLAN_CALC_CONFIG so the standalone calculator can switch
+// between them without navigating away.
+var SS_PLANS = [
+  { group: "Term Insurance", label: "LIC New Jeevan Amar", cfg: { type: "term", minAge: 18, maxAge: 65, minTerm: 10, maxTerm: 40, minSA: 2500000, defaultSA: 5000000 } },
+  { group: "Term Insurance", label: "LIC Saral Jeevan Bima", cfg: { type: "term", minAge: 18, maxAge: 65, minTerm: 5, maxTerm: 40, minSA: 500000, defaultSA: 1000000 } },
+
+  { group: "Endowment & Savings", label: "LIC New Jeevan Anand", cfg: { type: "endowment", minAge: 18, maxAge: 50, minTerm: 15, maxTerm: 35, minSA: 200000, defaultSA: 500000, bonusRate: 46, fabRate: 850 } },
+  { group: "Endowment & Savings", label: "LIC Jeevan Labh", cfg: { type: "endowment", minAge: 8, maxAge: 59, fixedTerms: [16, 21, 25], minSA: 200000, defaultSA: 500000, bonusRate: 48, fabRate: 900 } },
+  { group: "Endowment & Savings", label: "LIC Jeevan Azad", cfg: { type: "guaranteed", minAge: 1, maxAge: 50, fixedTerms: [15, 20], minSA: 200000, defaultSA: 300000, guaranteedAdditionRate: 60 } },
+  { group: "Endowment & Savings", label: "LIC Bima Jyoti", cfg: { type: "guaranteed", minAge: 1, maxAge: 60, minTerm: 15, maxTerm: 20, minSA: 100000, defaultSA: 500000, guaranteedAdditionRate: 50 } },
+  { group: "Endowment & Savings", label: "LIC New Endowment", cfg: { type: "endowment", minAge: 8, maxAge: 50, minTerm: 12, maxTerm: 35, minSA: 200000, defaultSA: 500000, bonusRate: 45, fabRate: 750 } },
+
+  { group: "Whole Life", label: "LIC Jeevan Umang", cfg: { type: "endowment", minAge: 1, maxAge: 55, minTerm: 15, maxTerm: 30, minSA: 200000, defaultSA: 500000, bonusRate: 38, fabRate: 0 } },
+
+  { group: "Pension", label: "LIC New Jeevan Shanti", cfg: { type: "pension", minAge: 30, maxAge: 79, minSA: 150000, defaultSA: 1000000 } },
+  { group: "Pension", label: "LIC Jeevan Akshay VII", cfg: { type: "pension", minAge: 25, maxAge: 85, minSA: 100000, defaultSA: 1000000 } },
+  { group: "Pension", label: "LIC Saral Pension", cfg: { type: "pension", minAge: 40, maxAge: 80, minSA: 100000, defaultSA: 1000000 } },
+
+  { group: "Child Plans", label: "LIC Jeevan Tarun", cfg: { type: "endowment", minAge: 0, maxAge: 12, minTerm: 13, maxTerm: 25, minSA: 100000, defaultSA: 500000, bonusRate: 45, fabRate: 700 } },
+  { group: "Child Plans", label: "LIC Amritbaal", cfg: { type: "guaranteed", minAge: 0, maxAge: 13, minTerm: 5, maxTerm: 25, minSA: 100000, defaultSA: 300000, guaranteedAdditionRate: 80 } },
+  { group: "Child Plans", label: "LIC New Children's Money Back", cfg: { type: "endowment", minAge: 0, maxAge: 12, minTerm: 13, maxTerm: 25, minSA: 100000, defaultSA: 500000, bonusRate: 45, fabRate: 700 } },
+
+  { group: "Money-Back", label: "LIC Bima Bachat", cfg: { type: "endowment", minAge: 15, maxAge: 50, fixedTerms: [9, 12, 15], minSA: 100000, defaultSA: 500000, bonusRate: 40, fabRate: 0 } },
+  { group: "Money-Back", label: "LIC New Money Back – 20 Years", cfg: { type: "endowment", minAge: 13, maxAge: 50, fixedTerms: [20], minSA: 100000, defaultSA: 500000, bonusRate: 35, fabRate: 500 } },
+  { group: "Money-Back", label: "LIC New Money Back – 25 Years", cfg: { type: "endowment", minAge: 13, maxAge: 45, fixedTerms: [25], minSA: 100000, defaultSA: 500000, bonusRate: 38, fabRate: 550 } }
+];
+
+(function () {
+  var picker = document.getElementById("plan-picker");
+  var groups = {};
+  SS_PLANS.forEach(function (p, i) {
+    if (!groups[p.group]) groups[p.group] = [];
+    groups[p.group].push(i);
+  });
+
+  Object.keys(groups).forEach(function (groupName) {
+    var optgroup = document.createElement("optgroup");
+    optgroup.label = groupName;
+    groups[groupName].forEach(function (i) {
+      var opt = document.createElement("option");
+      opt.value = i;
+      opt.textContent = SS_PLANS[i].label;
+      optgroup.appendChild(opt);
+    });
+    picker.appendChild(optgroup);
+  });
+
+  function loadPlan(index) {
+    window.PLAN_CALC_CONFIG = SS_PLANS[index].cfg;
+    if (window.SecureSarthiCalc) {
+      window.SecureSarthiCalc.rerender(SS_PLANS[index].cfg);
+    }
+  }
+
+  picker.addEventListener("change", function () {
+    loadPlan(parseInt(picker.value, 10));
+  });
+
+  // Optional: preselect via ?plan=Jeevan%20Amar style query, else default to first plan
+  var params = new URLSearchParams(window.location.search);
+  var requested = params.get("plan");
+  var startIndex = 0;
+  if (requested) {
+    var match = SS_PLANS.findIndex(function (p) {
+      return p.label.toLowerCase().indexOf(requested.toLowerCase()) !== -1;
+    });
+    if (match !== -1) startIndex = match;
+  }
+  picker.value = startIndex;
+  window.PLAN_CALC_CONFIG = SS_PLANS[startIndex].cfg;
+})();
+</script>
+<script src="js/plan-calculator.js"></script>
+</body>
+</html>
