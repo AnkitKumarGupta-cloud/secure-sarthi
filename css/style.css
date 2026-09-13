@@ -345,38 +345,94 @@ footer > .container { position: relative; z-index: 1; }
 .about-point p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
 @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
 
-/* ─── ABOUT DARK VARIANT (matches redesign mockup) ─── */
-.about-dark { background: var(--midnight); }
-.eyebrow-dark { color: var(--gold); }
-.dark-heading { color: var(--white) !important; }
-.dark-subtext { color: rgba(255,255,255,0.65) !important; }
-.about-grid-dark .about-point-dark {
-  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+/* ─── WAVE TRANSITION ─── */
+.section-wave-top {
+  display: block; line-height: 0;
+  background: var(--midnight); /* colour behind the wave = hero bg */
+  margin-bottom: -2px; /* close any sub-pixel gap */
 }
-.about-grid-dark .about-point-dark h4 { color: var(--white); }
-.about-grid-dark .about-point-dark p { color: rgba(255,255,255,0.6); }
-.about-grid-dark .about-point-dark .about-point-icon { background: var(--gold); color: var(--midnight); }
+.section-wave-top svg { width: 100%; height: auto; display: block; }
 
-.about-quote-card {
-  position: relative; max-width: 920px; margin: 40px auto 0;
-  border-radius: 12px; overflow: hidden; min-height: 220px;
+/* ─── ABOUT NEW ─── */
+.about-new {
+  background: var(--sand);
+  padding-top: 0;
+  padding-bottom: 80px;
 }
-.about-quote-card img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
-.about-quote-overlay {
+
+/* Eyebrow row */
+.about-new-header { text-align: center; max-width: 640px; margin: 0 auto 56px; }
+.about-new-eyebrow {
+  display: flex; align-items: center; justify-content: center;
+  gap: 12px; margin-bottom: 20px;
+}
+.about-new-rule {
+  display: block; flex: 1; max-width: 60px; height: 1.5px;
+  background: var(--gold);
+}
+.about-new-eyebrow-text {
+  font-size: 11px; font-weight: 600; letter-spacing: 0.18em;
+  color: var(--gold); text-transform: uppercase;
+}
+.about-new-heading {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 5vw, 38px);
+  font-weight: 700; color: var(--midnight);
+  line-height: 1.2; margin-bottom: 18px;
+}
+.about-new-sub {
+  font-size: 15px; color: var(--ink-soft);
+  line-height: 1.75; max-width: 520px; margin: 0 auto;
+}
+
+/* 3-card grid */
+.about-new-grid {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: 20px; max-width: 900px; margin: 0 auto 48px;
+}
+.about-new-card {
+  background: var(--cream); border: 1px solid var(--rule);
+  border-radius: 14px; padding: 28px 24px;
+  transition: box-shadow 0.2s, transform 0.2s;
+}
+.about-new-card:hover { box-shadow: 0 10px 28px rgba(13,27,42,0.08); transform: translateY(-3px); }
+.about-new-icon {
+  width: 44px; height: 44px; border-radius: 10px;
+  background: var(--midnight); display: flex;
+  align-items: center; justify-content: center;
+  margin-bottom: 18px;
+}
+.about-new-icon svg { width: 20px; height: 20px; stroke: var(--gold); }
+.about-new-card h4 {
+  font-family: 'Playfair Display', serif; font-size: 16px;
+  font-weight: 600; color: var(--midnight); margin-bottom: 8px;
+}
+.about-new-card p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.65; }
+
+/* Quote image card */
+.about-new-quote {
+  position: relative; max-width: 900px; margin: 0 auto;
+  border-radius: 14px; overflow: hidden; min-height: 220px;
+}
+.about-new-quote img {
+  width: 100%; height: 100%; object-fit: cover;
+  display: block; position: absolute; inset: 0;
+}
+.about-new-quote-overlay {
   position: relative; z-index: 1; min-height: 220px;
   display: flex; align-items: flex-end; padding: 32px;
-  background: linear-gradient(180deg, rgba(13,27,42,0.15) 0%, rgba(13,27,42,0.85) 100%);
+  background: linear-gradient(180deg, rgba(13,27,42,0.10) 0%, rgba(13,27,42,0.82) 100%);
 }
-.about-quote-text {
-  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600;
-  font-size: clamp(19px, 2.4vw, 26px); color: var(--white); max-width: 460px; line-height: 1.4;
+.about-new-quote-text {
+  font-family: 'Playfair Display', serif; font-style: italic;
+  font-weight: 600; font-size: clamp(18px, 2.4vw, 26px);
+  color: var(--white); max-width: 460px; line-height: 1.4;
 }
 
-.disclaimer-box-dark {
-  background: rgba(255,255,255,0.05); border-left-color: var(--gold);
-  color: rgba(255,255,255,0.6);
+@media (max-width: 720px) {
+  .about-new-grid { grid-template-columns: 1fr; max-width: 480px; }
+  .about-new { padding-bottom: 56px; }
 }
-.disclaimer-box-dark a { color: var(--gold); text-decoration: underline; }
 
 /* ─── PLAN DETAIL PAGE ─── */
 .breadcrumb {
