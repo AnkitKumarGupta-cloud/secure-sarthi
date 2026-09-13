@@ -163,7 +163,7 @@ nav {
 
 @media (max-width: 900px) {
   .hero-split { flex-direction: column; min-height: auto; height: auto; }
-  .hero-split-text { flex: none; max-width: none; min-height: 0; padding: 56px 24px 40px; align-items: center; text-align: center; }
+  .hero-split-text { flex: none; max-width: none; min-height: 0; justify-content: flex-start; padding: 56px 24px 32px; align-items: center; text-align: center; }
   .hero-eyebrow { align-self: center; }
   .hero-split-text h1, .hero-split-text p { text-align: center; margin-left: auto; margin-right: auto; }
   .hero-split-text p { max-width: 480px; }
@@ -171,6 +171,7 @@ nav {
   .hero-trust-row-split { justify-content: center; max-width: none; }
   .hero-trust-row-split .hero-trust-item { align-items: center; }
   .hero-split-photo { flex: none; clip-path: none; height: 320px; }
+  .hero-split-photo img { object-position: center 65%; }
   .hero-split-photo-fade { background: linear-gradient(180deg, var(--midnight) 0%, rgba(13,27,42,0) 22%); }
 }
 @media (max-width: 480px) {
