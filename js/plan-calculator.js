@@ -226,6 +226,8 @@
     rerender: function (newCfg) {
       cfg = newCfg;
       window.PLAN_CALC_CONFIG = newCfg;
+      var oldRoot = document.getElementById("plan-calc-root");
+      if (oldRoot) oldRoot.innerHTML = "";
       render();
     }
   };
