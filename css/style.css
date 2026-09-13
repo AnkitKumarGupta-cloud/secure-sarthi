@@ -111,6 +111,7 @@ nav {
   min-height: clamp(560px, 88vh, 740px);
   background: var(--midnight);
   overflow: hidden;
+  padding: 0;
 }
 .hero-split-text {
   flex: 0 0 52%; max-width: 620px;
@@ -174,7 +175,7 @@ nav {
   .hero-trust-row-split .hero-trust-item { align-items: center; }
   .hero-split-photo { flex: none; clip-path: none; height: 420px; position: relative; }
   .hero-split-photo img { object-position: center 78%; }
-  .hero-split-photo-fade { background: linear-gradient(180deg, var(--midnight) 0%, rgba(13,27,42,0) 18%, rgba(13,27,42,0) 72%, #F5EFE6 100%); }
+  .hero-split-photo-fade { background: linear-gradient(180deg, var(--midnight) 0%, rgba(13,27,42,0) 20%, rgba(13,27,42,0) 78%, var(--midnight) 100%); }
 }
 @media (max-width: 480px) {
   .hero-split-text { padding: 48px 20px 36px; }
