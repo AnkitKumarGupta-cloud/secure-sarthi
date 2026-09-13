@@ -314,6 +314,39 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
 .about-point p { font-size: 13.5px; color: var(--ink-soft); line-height: 1.6; }
 @media (max-width: 720px) { .about-grid { grid-template-columns: 1fr; } }
 
+/* ─── ABOUT DARK VARIANT (matches redesign mockup) ─── */
+.about-dark { background: var(--midnight); }
+.eyebrow-dark { color: var(--gold); }
+.dark-heading { color: var(--white) !important; }
+.dark-subtext { color: rgba(255,255,255,0.65) !important; }
+.about-grid-dark .about-point-dark {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.12);
+}
+.about-grid-dark .about-point-dark h4 { color: var(--white); }
+.about-grid-dark .about-point-dark p { color: rgba(255,255,255,0.6); }
+.about-grid-dark .about-point-dark .about-point-icon { background: var(--gold); color: var(--midnight); }
+
+.about-quote-card {
+  position: relative; max-width: 920px; margin: 40px auto 0;
+  border-radius: 12px; overflow: hidden; min-height: 220px;
+}
+.about-quote-card img { width: 100%; height: 100%; object-fit: cover; display: block; position: absolute; inset: 0; }
+.about-quote-overlay {
+  position: relative; z-index: 1; min-height: 220px;
+  display: flex; align-items: flex-end; padding: 32px;
+  background: linear-gradient(180deg, rgba(13,27,42,0.15) 0%, rgba(13,27,42,0.85) 100%);
+}
+.about-quote-text {
+  font-family: 'Playfair Display', serif; font-style: italic; font-weight: 600;
+  font-size: clamp(19px, 2.4vw, 26px); color: var(--white); max-width: 460px; line-height: 1.4;
+}
+
+.disclaimer-box-dark {
+  background: rgba(255,255,255,0.05); border-left-color: var(--gold);
+  color: rgba(255,255,255,0.6);
+}
+.disclaimer-box-dark a { color: var(--gold); text-decoration: underline; }
+
 /* ─── PLAN DETAIL PAGE ─── */
 .breadcrumb {
   font-size: 12.5px; color: var(--stone); padding: 20px 0 0;
