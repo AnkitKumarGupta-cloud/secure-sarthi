@@ -25,7 +25,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
-<link rel="stylesheet" href="css/style.css?v=36"/>
+<link rel="stylesheet" href="css/style.css?v=37"/>
 </head>
 <body>
 
@@ -203,15 +203,23 @@
       <div class="calc-teaser-text">
         <span class="hero-eyebrow" style="margin-bottom:16px">Free & Instant</span>
         <h2>Know Your Premium in Seconds</h2>
-        <p>Pick any plan, enter your age and cover amount — get an instant estimate before you talk to anyone.</p>
-        <a href="calculator.html" class="btn-hero">Try the Calculator &rarr;</a>
+        <p>Drag the sliders and watch your estimate update live — then pick any plan for a detailed breakdown.</p>
+        <a href="calculator.html" class="btn-hero">Get a Detailed Estimate &rarr;</a>
       </div>
       <div class="calc-teaser-visual">
-        <div class="calc-mock">
-          <div class="calc-mock-row"><span>Age</span><strong>30</strong></div>
-          <div class="calc-mock-row"><span>Cover Amount</span><strong>&#8377;50,00,000</strong></div>
-          <div class="calc-mock-row"><span>Term</span><strong>25 years</strong></div>
-          <div class="calc-mock-result"><span>Estimated Premium</span><strong>&#8377;11,200<em>/yr</em></strong></div>
+        <div class="calc-mock" id="mini-calc">
+          <div class="mini-calc-row">
+            <div class="mini-calc-label"><span>Your Age</span><strong id="mini-age-val">30</strong></div>
+            <input type="range" id="mini-age" min="18" max="60" value="30" class="mini-calc-slider"/>
+          </div>
+          <div class="mini-calc-row">
+            <div class="mini-calc-label"><span>Cover Amount</span><strong id="mini-cover-val">&#8377;50L</strong></div>
+            <input type="range" id="mini-cover" min="2500000" max="20000000" step="2500000" value="5000000" class="mini-calc-slider"/>
+          </div>
+          <div class="calc-mock-result">
+            <span>Estimated Annual Premium</span>
+            <strong id="mini-premium">&#8377;11,200<em>/yr</em></strong>
+          </div>
         </div>
       </div>
     </div>
@@ -378,6 +386,53 @@ document.getElementById('contactForm').addEventListener('submit', function(e) {
   btn.style.background = 'var(--emerald)';
   setTimeout(() => { btn.textContent = "I'll be in touch soon"; }, 1800);
 });
+
+// Live homepage mini-calculator (term-insurance style estimate).
+// Uses the same per-lakh rate table as js/plan-calculator.js so the
+// number shown here always matches the real calculator's math.
+(function () {
+  const ageInput = document.getElementById('mini-age');
+  const coverInput = document.getElementById('mini-cover');
+  const ageVal = document.getElementById('mini-age-val');
+  const coverVal = document.getElementById('mini-cover-val');
+  const premiumOut = document.getElementById('mini-premium');
+  if (!ageInput || !coverInput) return;
+
+  function perLakhRate(age) {
+    if (age < 25) return 90;
+    if (age < 30) return 110;
+    if (age < 35) return 150;
+    if (age < 40) return 210;
+    if (age < 45) return 300;
+    if (age < 50) return 430;
+    if (age < 55) return 620;
+    if (age < 60) return 880;
+    return 1250;
+  }
+
+  function formatCover(v) {
+    const lakh = v / 100000;
+    if (lakh >= 100) return '\u20B9' + (lakh / 100).toFixed(1).replace(/\.0$/, '') + 'Cr';
+    return '\u20B9' + Math.round(lakh) + 'L';
+  }
+
+  function formatPremium(v) {
+    return '\u20B9' + Math.round(v).toLocaleString('en-IN');
+  }
+
+  function update() {
+    const age = parseInt(ageInput.value, 10);
+    const cover = parseInt(coverInput.value, 10);
+    const annual = (cover / 100000) * perLakhRate(age);
+    ageVal.textContent = age;
+    coverVal.textContent = formatCover(cover);
+    premiumOut.innerHTML = formatPremium(annual) + '<em>/yr</em>';
+  }
+
+  ageInput.addEventListener('input', update);
+  coverInput.addEventListener('input', update);
+  update();
+})();
 </script>
 </body>
 </html>
