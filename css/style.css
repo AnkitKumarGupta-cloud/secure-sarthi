@@ -474,7 +474,7 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
 
 /* ─── PLAN DETAIL PAGE ─── */
 .breadcrumb {
-  font-size: 12px; color: var(--stone); padding: 18px 0; letter-spacing: 0.01em;
+  font-size: 12px; color: var(--stone); padding-top: 18px; padding-bottom: 18px; letter-spacing: 0.01em;
   border-bottom: 1px solid var(--rule);
 }
 .breadcrumb a { color: var(--stone); border-bottom: 1px solid transparent; }
@@ -485,6 +485,11 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
 .plan-detail-hero {
   background: radial-gradient(ellipse 90% 60% at 50% 0%, #1A3A5C 0%, #0D1B2A 60%);
   padding: 40px 0 52px;
+}
+.card-tag {
+  display: inline-block; font-size: 11px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--gold); border: 1px solid rgba(201,169,110,0.4);
+  padding: 7px 16px; border-radius: 99px;
 }
 .plan-detail-hero .card-tag { margin-bottom: 18px; }
 .plan-detail-hero h1 {
