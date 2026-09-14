@@ -474,7 +474,8 @@ footer p { font-size: 12px; color: rgba(255,255,255,0.3); }
 
 /* ─── PLAN DETAIL PAGE ─── */
 .breadcrumb {
-  font-size: 13px; color: var(--stone); padding: 20px 0 0;
+  font-size: 12px; color: var(--stone); padding: 18px 0; letter-spacing: 0.01em;
+  border-bottom: 1px solid var(--rule);
 }
 .breadcrumb a { color: var(--stone); border-bottom: 1px solid transparent; }
 .breadcrumb a:hover { color: var(--emerald); border-color: var(--emerald); }
