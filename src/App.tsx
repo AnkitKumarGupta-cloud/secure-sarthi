@@ -1,3 +1,4 @@
+import { useRef } from 'react'
 import { MotionConfig } from 'framer-motion'
 import { Footer } from './components/layout/Footer'
 import { Header } from './components/layout/Header'
@@ -42,11 +43,15 @@ function Page() {
 function Shell() {
   const route = useRoute()
   const key = route.name === 'plan' ? `plan-${route.id}` : route.name === 'legal' ? `legal-${route.doc}` : route.name === 'named' ? `named-${route.slug}` : route.name
+  // Fade pages in only when moving between them. On first load the content is already in the HTML and should show at once.
+  const firstKey = useRef(key)
+  const navigated = useRef(false)
+  if (key !== firstKey.current) navigated.current = true
   return (
     <div className="relative overflow-x-clip">
       <Header />
       <main id="main" tabIndex={-1} className="outline-none">
-        <div key={key} className="kv-page">
+        <div key={key} className={navigated.current ? 'kv-page' : undefined}>
           <Page />
         </div>
       </main>

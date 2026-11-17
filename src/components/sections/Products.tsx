@@ -3,7 +3,7 @@ import { ArrowRight } from 'lucide-react'
 import { Link } from '../../lib/router'
 import { PLANS, type Plan } from '../../data/content'
 import { cn } from '../../lib/hooks'
-import { img } from '../../data/images'
+import { art } from '../../data/images'
 import { ButtonLink } from '../ui/Button'
 import { Reveal, staggerChild, staggerParent } from '../ui/Reveal'
 import { TiltCard } from '../ui/TiltCard'
@@ -14,7 +14,7 @@ const chip = (a: string) =>
 function Illustration({ plan }: { plan: Plan }) {
   return (
     <img
-      src={img(plan.id)}
+      {...art(plan.id, '(min-width: 1024px) 260px, 160px')}
       alt=""
       loading="lazy"
       decoding="async"

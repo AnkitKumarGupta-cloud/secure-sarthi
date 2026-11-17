@@ -1,5 +1,5 @@
 import { VALUES } from '../../data/content'
-import { img } from '../../data/images'
+import { art } from '../../data/images'
 import { ButtonLink } from '../ui/Button'
 import { Reveal } from '../ui/Reveal'
 
@@ -12,7 +12,7 @@ function BuildingVisual() {
         <div className="absolute left-[30%] top-[8%] h-6 w-20 rounded-full bg-white/60 blur-md" />
       </div>
       <img
-        src={img('building')}
+        {...art('building', '(min-width: 640px) 480px, 90vw')}
         alt=""
         loading="lazy"
         decoding="async"

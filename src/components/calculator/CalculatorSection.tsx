@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react'
-import { img } from '../../data/images'
+import { art } from '../../data/images'
 import { cn } from '../../lib/hooks'
 import { Button } from '../ui/Button'
 import { Reveal } from '../ui/Reveal'
@@ -13,7 +13,7 @@ function CalculatorStage() {
         className="absolute aspect-square h-[92%] rounded-full bg-[radial-gradient(closest-side,rgba(96,176,255,0.5),rgba(96,176,255,0)_72%)]"
       />
       <img
-        src={img('calculator')}
+        {...art('calculator', '(min-width: 1024px) 440px, 90vw')}
         alt=""
         loading="lazy"
         decoding="async"

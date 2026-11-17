@@ -1,5 +1,5 @@
 import { motion, useReducedMotion, useTransform, type MotionValue } from 'framer-motion'
-import { img } from '../../data/images'
+import { art } from '../../data/images'
 
 /** Twinkling gold sparkles around the illustration (x/y are percentages of the stage). */
 const SPARKS = [
@@ -53,12 +53,11 @@ export function HeroStage({ px, py }: { px: MotionValue<number>; py: MotionValue
       />
       <motion.div style={reduce ? undefined : { x: artX, y: artY }} className="absolute inset-x-0 bottom-[10%] top-0">
         <img
-          src={img('hero')}
+          {...art('hero', '(min-width: 1024px) 440px, 300px')}
           width={832}
-          height={1165}
+          height={1038}
           alt="A smiling Indian family of five, parents, two children and grandparents, standing together inside a protective glass dome with shield emblems on a golden platform"
           fetchPriority="high"
-          decoding="async"
           draggable={false}
           className="kv-bob h-full w-full select-none object-contain object-bottom drop-shadow-[0_22px_30px_rgba(20,50,110,0.22)]"
         />

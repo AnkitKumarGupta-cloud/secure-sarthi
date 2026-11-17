@@ -1,6 +1,6 @@
 import { ArrowRight } from 'lucide-react'
 import { PLANS } from '../data/content'
-import { img } from '../data/images'
+import { art } from '../data/images'
 import { GOALS, PLAN_DETAILS } from '../data/planPages'
 import { ButtonLink } from '../components/ui/Button'
 import { Band, Note, PageHero, SectionHeading } from '../components/ui/Page'
@@ -66,7 +66,7 @@ export function PlansIndex() {
             <StaggerLi key={p.id} className="flex">
               <article className={cn('kv-lift flex w-full flex-col rounded-[28px] p-5 shadow-card ring-1 ring-ink/[0.05]', p.tint)}>
                 <div className="relative aspect-[300/236] w-full">
-                  <img src={img(p.id)} alt="" loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-contain" />
+                  <img {...art(p.id, '240px')} alt="" loading="lazy" decoding="async" draggable={false} className="absolute inset-0 h-full w-full object-contain" />
                 </div>
                 <h3 className="mt-3 font-display text-[1.25rem] font-[740] leading-tight text-ink">{PLAN_DETAILS[p.id].product}</h3>
                 <p className="text-[0.88rem] font-semibold text-brand-deep">

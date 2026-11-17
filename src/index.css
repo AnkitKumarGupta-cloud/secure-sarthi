@@ -1,3 +1,12 @@
+/* Anek Devanagari cut down to the letters of the Hindi logo line (सिक्योर सारथी): about 5 KB instead of 250 KB. */
+@font-face {
+  font-family: 'Anek Devanagari Logo';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url('./assets/fonts/anek-devanagari-logo.woff2') format('woff2-variations');
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -26,10 +35,10 @@
   --pastel-mint: 228 246 237;
   --pastel-lilac: 245 236 252;
   --pastel-periwinkle: 237 237 255;
-  --font-display: 'Anek Latin', 'Mukta', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-display: 'Anek Latin Variable', 'Anek Latin', 'Mukta', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-body: 'Mukta', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
   --font-script: 'Kaushan Script', 'Brush Script MT', 'Segoe Script', cursive;
-  --font-deva: 'Anek Devanagari', 'Mukta', 'Noto Sans Devanagari', sans-serif;
+  --font-deva: 'Anek Devanagari Logo', 'Anek Devanagari', 'Mukta', 'Noto Sans Devanagari', sans-serif;
   --header-h: 64px;
   color-scheme: light;
 }

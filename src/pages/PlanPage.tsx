@@ -1,7 +1,7 @@
 import { useMemo } from 'react'
 import { ArrowRight, Check, X } from 'lucide-react'
 import { PLANS, type PlanId } from '../data/content'
-import { img } from '../data/images'
+import { art } from '../data/images'
 import { PLAN_DETAILS, type OptionItem } from '../data/planPages'
 import { PremiumForm, EstimatePanel, usePremiumCalculator } from '../components/calculator/PremiumForm'
 import { ButtonLink } from '../components/ui/Button'
@@ -80,7 +80,7 @@ export function PlanPage({ id }: { id: PlanId }) {
         }
         aside={
           <div className={cn('relative mx-auto aspect-[300/236] w-full max-w-[460px] rounded-[36px] p-6 shadow-card ring-1 ring-ink/[0.05]', plan.tint)}>
-            <img src={img(id)} alt="" decoding="async" draggable={false} className="kv-bob h-full w-full object-contain drop-shadow-[0_18px_22px_rgba(11,36,99,0.18)]" />
+            <img {...art(id, '(min-width: 1024px) 380px, 80vw')} alt="" draggable={false} className="kv-bob h-full w-full object-contain drop-shadow-[0_18px_22px_rgba(11,36,99,0.18)]" />
           </div>
         }
       />
@@ -263,7 +263,7 @@ export function PlanPage({ id }: { id: PlanId }) {
                 to={`/plans/${p.id}`}
                 className={cn('group flex h-full items-center gap-5 rounded-[26px] p-4 pr-5 shadow-card ring-1 ring-ink/[0.05] transition-shadow hover:shadow-lift', p.tint)}
               >
-                <img src={img(p.id)} alt="" loading="lazy" decoding="async" draggable={false} className="h-[96px] w-[122px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-[1.05]" />
+                <img {...art(p.id, '122px')} alt="" loading="lazy" decoding="async" draggable={false} className="h-[96px] w-[122px] shrink-0 object-contain transition-transform duration-300 group-hover:scale-[1.05]" />
                 <span className="min-w-0 flex-1">
                   <span className="block font-display text-[1.12rem] font-[700] leading-tight text-ink">{PLAN_DETAILS[p.id].product}</span>
                   <span className="mt-1 block text-[0.93rem] leading-snug text-ink-soft">{p.short}</span>

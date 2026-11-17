@@ -1,6 +1,6 @@
 import { BRAND, SERVICES, VALUES } from '../data/content'
 import { ABOUT_STORY, PRINCIPLES } from '../data/siteContent'
-import { img } from '../data/images'
+import { art } from '../data/images'
 import { ButtonLink } from '../components/ui/Button'
 import { FadeUp, StaggerLi, StaggerUl } from '../components/ui/Reveal'
 import { Band, Note, PageHero, SectionHeading, SubNav } from '../components/ui/Page'
@@ -22,7 +22,7 @@ export function AboutPage() {
         aside={
           <div className="relative mx-auto h-[280px] w-full max-w-[460px] sm:h-[330px]" aria-hidden>
             <div className="absolute left-1/2 top-0 h-[300px] w-[300px] -translate-x-1/2 rounded-full bg-[linear-gradient(180deg,#7fb4f4_0%,#a9cdf8_45%,#e2eefc_100%)] sm:h-[330px] sm:w-[330px]" />
-            <img src={img('building')} alt="" decoding="async" draggable={false} className="absolute bottom-0 left-1/2 w-[360px] max-w-none -translate-x-1/2 sm:w-[400px]" />
+            <img {...art('building', '400px')} alt="" decoding="async" draggable={false} className="absolute bottom-0 left-1/2 w-[360px] max-w-none -translate-x-1/2 sm:w-[400px]" />
           </div>
         }
       />

@@ -1,6 +1,6 @@
 import { ArrowRight, Check, ExternalLink, X } from 'lucide-react'
 import { PLANS } from '../data/content'
-import { img } from '../data/images'
+import { art } from '../data/images'
 import { findNamedPlan, namedPlansIn, officialListFor } from '../data/namedPlans'
 import { ButtonLink } from '../components/ui/Button'
 import { Band, Faq, Note, PageHero, SectionHeading } from '../components/ui/Page'
@@ -38,7 +38,7 @@ export function NamedPlanPage({ slug }: { slug: string }) {
         }
         aside={
           <div className={cn('relative mx-auto aspect-[300/236] w-full max-w-[420px] rounded-[36px] p-6 shadow-card ring-1 ring-ink/[0.05]', category.tint)}>
-            <img src={img(category.id)} alt="" decoding="async" draggable={false} className="h-full w-full object-contain drop-shadow-[0_18px_22px_rgba(11,36,99,0.18)]" />
+            <img {...art(category.id, '(min-width: 1024px) 380px, 80vw')} alt="" draggable={false} className="h-full w-full object-contain drop-shadow-[0_18px_22px_rgba(11,36,99,0.18)]" />
           </div>
         }
       />
