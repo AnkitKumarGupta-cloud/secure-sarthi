@@ -1,0 +1,298 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+  Layout: full-bleed colour bands, each with a centred 1200px column.
+  The hero splits into copy (left) and a live 3D shield over an Indian city skyline (right).
+  The page commits to one bright, daylight look, so there is no dark theme.
+*/
+:root {
+  --ink: 11 36 99; /* navy headings #0B2463 */
+  --ink-soft: 66 82 120; /* body copy #425278 */
+  --brand: 30 90 214; /* royal blue #1E5AD6 */
+  --brand-deep: 14 47 128; /* deep blue #0E2F80 */
+  --night: 9 29 84; /* footer navy #091D54 */
+  --gold: 249 196 33; /* marigold #F9C421 */
+  --gold-deep: 226 164 0; /* #E2A400 */
+  --paper: 255 255 255;
+  --mist: 244 247 252; /* section wash #F4F7FC */
+  --sky: 233 242 255; /* #E9F2FF */
+  --line: 220 229 243; /* hairlines #DCE5F3 */
+  --success: 21 128 61;
+  --danger: 190 38 38;
+  --pastel-blue: 234 242 255;
+  --pastel-cream: 255 245 222;
+  --pastel-mint: 228 246 237;
+  --pastel-lilac: 245 236 252;
+  --pastel-periwinkle: 237 237 255;
+  --font-display: 'Anek Latin', 'Mukta', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-body: 'Mukta', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-script: 'Kaushan Script', 'Brush Script MT', 'Segoe Script', cursive;
+  --font-deva: 'Anek Devanagari', 'Mukta', 'Noto Sans Devanagari', sans-serif;
+  --header-h: 64px;
+  color-scheme: light;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --header-h: 76px;
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+    -webkit-text-size-adjust: 100%;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background: rgb(var(--paper));
+    color: rgb(var(--ink));
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    text-wrap: balance;
+    letter-spacing: -0.012em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  :focus-visible {
+    outline: 3px solid rgb(var(--brand) / 0.55);
+    outline-offset: 3px;
+  }
+  ::selection {
+    background: rgb(var(--gold) / 0.45);
+    color: rgb(var(--ink));
+  }
+  [id] {
+    scroll-margin-top: calc(var(--header-h) + 16px);
+  }
+}
+
+@layer components {
+  .gutter {
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
+  @media (min-width: 640px) {
+    .gutter {
+      padding-left: max(24px, env(safe-area-inset-left, 0px));
+      padding-right: max(24px, env(safe-area-inset-right, 0px));
+    }
+  }
+  @media (min-width: 1024px) {
+    .gutter {
+      padding-left: max(40px, env(safe-area-inset-left, 0px));
+      padding-right: max(40px, env(safe-area-inset-right, 0px));
+    }
+  }
+  .wrap {
+    margin-inline: auto;
+    width: 100%;
+    max-width: 1200px;
+  }
+  .eyebrow {
+    font-family: var(--font-display);
+    font-weight: 650;
+    font-size: 0.78rem;
+    line-height: 1.2;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .skeleton {
+    background: linear-gradient(
+      100deg,
+      rgb(var(--paper) / 0) 20%,
+      rgb(var(--paper) / 0.75) 50%,
+      rgb(var(--paper) / 0) 80%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.6s linear infinite;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .skeleton {
+      animation: none;
+    }
+  }
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Calculator banner: deep navy-blue with soft light pools and faint orbit lines. */
+.calc-banner {
+  background:
+    radial-gradient(60% 80% at 12% 20%, rgb(88 152 255 / 0.42), transparent 60%),
+    radial-gradient(50% 70% at 92% 110%, rgb(36 112 255 / 0.45), transparent 65%),
+    linear-gradient(118deg, rgb(var(--night)) 0%, rgb(var(--brand-deep)) 46%, #1846a8 100%);
+}
+.calc-banner::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    radial-gradient(circle at 78% 30%, transparent 0 180px, rgb(255 255 255 / 0.07) 181px 182px, transparent 183px),
+    radial-gradient(circle at 78% 30%, transparent 0 290px, rgb(255 255 255 / 0.05) 291px 292px, transparent 293px),
+    radial-gradient(circle at 78% 30%, transparent 0 420px, rgb(255 255 255 / 0.04) 421px 422px, transparent 423px);
+}
+@keyframes calc-pulse {
+  0% {
+    box-shadow: 0 0 0 0 rgb(var(--gold) / 0.65);
+    border-radius: 26px;
+  }
+  100% {
+    box-shadow: 0 0 0 18px rgb(var(--gold) / 0);
+    border-radius: 26px;
+  }
+}
+
+/* Gentle floating for the illustrations; skipped entirely when the visitor prefers reduced motion. */
+@keyframes kv-bob {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-9px);
+  }
+}
+@keyframes kv-twinkle {
+  0%,
+  100% {
+    opacity: 0.25;
+    transform: scale(0.7);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.12);
+  }
+}
+.kv-spark {
+  opacity: 0.7;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .kv-bob {
+    animation: kv-bob 7s ease-in-out infinite;
+  }
+  .kv-spark {
+    animation: kv-twinkle var(--t, 4s) ease-in-out var(--d, 0s) infinite;
+  }
+}
+
+/* Soft entrance for each page; skipped when the visitor prefers reduced motion. */
+@keyframes kv-page-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .kv-page {
+    animation: kv-page-in 0.45s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
+
+/* Extra motion. Everything here is decoration and switches off for reduced-motion visitors. */
+@keyframes kv-fade {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes kv-ring {
+  0% {
+    box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.55), 0 14px 30px -10px rgba(8, 90, 45, 0.7);
+  }
+  100% {
+    box-shadow: 0 0 0 20px rgba(37, 211, 102, 0), 0 14px 30px -10px rgba(8, 90, 45, 0.7);
+  }
+}
+@keyframes kv-sheen {
+  from {
+    transform: translateX(-120%) skewX(-18deg);
+  }
+  to {
+    transform: translateX(260%) skewX(-18deg);
+  }
+}
+@keyframes kv-drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-24px, 18px, 0) scale(1.06);
+  }
+}
+.kv-lift {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s ease,
+    border-color 0.28s ease;
+}
+.kv-lift:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 22px 44px -26px rgb(var(--ink) / 0.5);
+  border-color: rgb(var(--brand) / 0.35);
+}
+details[open] > p {
+  animation: kv-fade 0.3s ease both;
+}
+@media (prefers-reduced-motion: no-preference) {
+  .kv-fab {
+    animation: kv-ring 2.4s ease-out 2.4s infinite;
+  }
+  .kv-sheen {
+    position: relative;
+    overflow: hidden;
+  }
+  .kv-sheen::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    width: 40%;
+    background: linear-gradient(100deg, transparent, rgba(255, 255, 255, 0.55), transparent);
+    transform: translateX(-120%) skewX(-18deg);
+    animation: kv-sheen 4.5s ease-in-out 1.5s infinite;
+    pointer-events: none;
+  }
+  .kv-drift {
+    animation: kv-drift 14s ease-in-out infinite;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .kv-lift:hover {
+    transform: none;
+  }
+}
