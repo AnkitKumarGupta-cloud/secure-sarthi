@@ -74,7 +74,7 @@ for (const route of seo.allRoutes()) {
   mkdirSync(dir, { recursive: true })
   writeFileSync(join(dir, 'index.html'), html)
   const legal = route.name === 'legal'
-  urls.push({ loc: seo.absolute(meta.path), priority: meta.path === '/' ? '1.0' : legal ? '0.2' : route.name === 'plan' ? '0.9' : '0.7' })
+  urls.push({ loc: seo.absolute(meta.path), priority: meta.path === '/' ? '1.0' : legal ? '0.2' : route.name === 'plan' || route.name === 'named' ? '0.9' : '0.7' })
 }
 
 const nf = seo.metaFor({ name: 'notfound' })

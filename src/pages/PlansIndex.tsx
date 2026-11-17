@@ -8,6 +8,7 @@ import { cn } from '../lib/hooks'
 import { FadeUp, StaggerLi, StaggerUl } from '../components/ui/Reveal'
 
 import { Link } from '../lib/router'
+import { NamedPlanLinks } from './NamedPlanPage'
 
 const ROWS: Array<{ label: string; get: (i: number) => string }> = [
   { label: 'Best for', get: (i) => PLANS[i].goodFor },
@@ -142,6 +143,20 @@ export function PlansIndex() {
         </div>
         </FadeUp>
         <Note className="mt-4">Summarised from public information and may not reflect the latest changes. The LIC brochure and policy document are the final authority.</Note>
+      </Band>
+
+      <Band tone="mist">
+        <SectionHeading eyebrow="By name" title="Looking for a specific LIC plan?" intro="Plain-words guides to the LIC plans people ask me about most, with current plan numbers." />
+        <div className="mt-8 space-y-8">
+          {PLANS.map((p) => (
+            <div key={p.id}>
+              <h3 className="font-display text-[1.2rem] font-[700] text-ink">
+                <Link to={`/plans/${p.id}`} className="underline-offset-2 hover:underline">{p.title}</Link>
+              </h3>
+              <NamedPlanLinks category={p.id} className="mt-3" />
+            </div>
+          ))}
+        </div>
       </Band>
     </>
   )

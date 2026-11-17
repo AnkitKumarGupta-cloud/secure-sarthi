@@ -13,6 +13,7 @@ import {
 import { CLAIM_TOPICS, LEGAL_DOCS, PLANS, type ClaimTopicId, type LegalDocId, type PlanId } from '../data/content'
 import { scrollToSection } from './hooks'
 import { applyMeta, metaFor } from '../data/seo'
+import { findNamedPlan } from '../data/namedPlans'
 
 /**
  * A tiny router. The live site uses real paths (`/plans/endowment`) so every page can be indexed.
@@ -25,6 +26,7 @@ export type Route =
   | { name: 'home' }
   | { name: 'plans' }
   | { name: 'plan'; id: PlanId }
+  | { name: 'named'; slug: string }
   | { name: 'claims'; topic?: ClaimTopicId }
   | { name: 'about' }
   | { name: 'contact' }
@@ -41,6 +43,7 @@ function parse(raw: string): { route: Route; section: string | null } {
   if (!a) route = { name: 'home' }
   else if (a === 'plans' && parts.length === 1) route = { name: 'plans' }
   else if (a === 'plans' && parts.length === 2 && PLANS.some((p) => p.id === b)) route = { name: 'plan', id: b as PlanId }
+  else if (a === 'plans' && parts.length === 2 && findNamedPlan(b)) route = { name: 'named', slug: b }
   else if (a === 'claims' && parts.length === 1) route = { name: 'claims' }
   else if (a === 'claims' && parts.length === 2 && CLAIM_TOPICS.some((t) => t.id === b))
     route = { name: 'claims', topic: b as ClaimTopicId }
@@ -55,6 +58,7 @@ const HASH_MODE = import.meta.env.MODE === 'artifact'
 function routeKey(route: Route) {
   if (route.name === 'plan') return `plan:${route.id}`
   if (route.name === 'legal') return `legal:${route.doc}`
+  if (route.name === 'named') return `named:${route.slug}`
   return route.name
 }
 

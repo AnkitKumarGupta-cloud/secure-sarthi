@@ -10,6 +10,8 @@ import { FadeUp, StaggerDiv, StaggerDl, StaggerLi, StaggerOl, StaggerUl } from '
 import { cn } from '../lib/hooks'
 import { Link } from '../lib/router'
 import { AnnuityEstimator, MoneyBackSchedule } from './PlanTools'
+import { NamedPlanLinks } from './NamedPlanPage'
+import { namedPlansIn } from '../data/namedPlans'
 
 const NAV = [
   { id: 'plan-benefits', label: 'Benefits' },
@@ -235,6 +237,13 @@ export function PlanPage({ id }: { id: PlanId }) {
           )}
         </FadeUp>
       </Band>
+
+      {namedPlansIn(id).length > 0 && (
+        <Band>
+          <SectionHeading eyebrow="Other plans like this" title={`More ${plan.title.toLowerCase()} from LIC`} intro="Each has its own page with eligibility, how it works and FAQs." />
+          <NamedPlanLinks category={id} className="mt-6" />
+        </Band>
+      )}
 
       <Band id="plan-faq" tone="mist">
         <div className="grid gap-8 lg:grid-cols-[minmax(0,320px)_minmax(0,1fr)] lg:gap-12">

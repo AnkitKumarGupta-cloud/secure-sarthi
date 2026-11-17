@@ -72,12 +72,12 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
   endowment: {
     id: 'endowment',
     product: 'LIC’s New Endowment Plan',
-    planNo: 'Plan 914',
+    planNo: 'Plan 714',
     lead: 'Save for a goal that has a date on it. You are covered throughout, and you receive the sum assured plus bonuses when the plan matures.',
     facts: [
       { label: 'Entry age', value: '8–50 years', note: 'Upper age was reduced recently' },
       { label: 'Policy term', value: '12–35 years', note: 'Ends by age 75' },
-      { label: 'Minimum cover', value: '₹1 lakh', note: 'No upper limit' },
+      { label: 'Minimum cover', value: '₹2 lakh', note: 'No upper limit' },
       { label: 'At maturity', value: 'Sum assured + bonuses', note: 'Bonuses are not guaranteed' },
     ],
     benefits: [
@@ -148,7 +148,7 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
       ['Entry age', '8 to 50 years (please confirm the current limit with me)'],
       ['Policy term', '12 to 35 years'],
       ['Maximum age at maturity', '75 years'],
-      ['Minimum basic sum assured', '₹1 lakh. No fixed maximum'],
+      ['Minimum basic sum assured', '₹2 lakh. No fixed maximum'],
       ['Premium modes', 'Yearly, half-yearly, quarterly or monthly'],
       ['Maturity benefit', 'Basic sum assured plus vested simple reversionary bonuses and any final additional bonus'],
       ['Death benefit', 'Highest of the basic sum assured, 7 times the annualised premium or 105% of premiums paid, plus vested bonuses and any final additional bonus'],
@@ -218,12 +218,12 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
   moneyback: {
     id: 'moneyback',
     product: 'LIC’s New Money Back Plan – 20 Years',
-    planNo: 'Plan 936',
+    planNo: 'Plan 720',
     lead: 'A plan that pays part of your sum assured back at fixed points while your full life cover continues, with the balance and bonuses at the end.',
     facts: [
       { label: 'Entry age', value: '13–50 years' },
       { label: 'Policy term', value: '20 years', note: 'Pay for 15 years' },
-      { label: 'Minimum cover', value: '₹1 lakh', note: 'In multiples of ₹5,000' },
+      { label: 'Minimum cover', value: '₹1–2 lakh', note: 'I confirm the current minimum' },
       { label: 'Money back', value: '20% × 3, then 40%', note: 'At years 5, 10, 15 and 20' },
     ],
     benefits: [
@@ -289,7 +289,7 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
       ['Policy term', '20 years'],
       ['Premium paying term', '15 years'],
       ['Maximum age at maturity', '70 years'],
-      ['Minimum basic sum assured', '₹1 lakh, in multiples of ₹5,000. No fixed maximum'],
+      ['Minimum basic sum assured', 'Set by the current plan version; I confirm it with your quote. No fixed maximum'],
       ['Premium modes', 'Yearly, half-yearly, quarterly or monthly'],
       ['Survival benefit', '20% of the basic sum assured at the end of years 5, 10 and 15'],
       ['Maturity benefit', '40% of the basic sum assured plus vested bonuses and any final additional bonus'],
@@ -491,7 +491,7 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
   child: {
     id: 'child',
     product: 'LIC’s Amritbaal',
-    planNo: 'Plan 874',
+    planNo: 'Plan 774',
     lead: 'A savings plan for your child’s future. Guaranteed additions build the maturity amount every year, and you pay for only a few years.',
     facts: [
       { label: 'Child’s age at entry', value: '30 days–13 years' },

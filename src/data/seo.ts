@@ -1,6 +1,7 @@
 import { BRAND, LEGAL_DOCS, PLANS, type PlanId } from './content'
 import { PLAN_DETAILS } from './planPages'
 import { CLAIM_FAQS } from './siteContent'
+import { NAMED_PLANS, findNamedPlan } from './namedPlans'
 import type { Route } from '../lib/router'
 
 /** Everything search engines and link previews need to know about each page. */
@@ -32,6 +33,8 @@ export function pathFor(route: Route): string {
       return '/plans'
     case 'plan':
       return `/plans/${route.id}`
+    case 'named':
+      return `/plans/${route.slug}`
     case 'claims':
       return '/claims'
     case 'about':
@@ -72,6 +75,18 @@ export function metaFor(route: Route): PageMeta {
         description: `${d.product} (${d.planNo}) explained in plain words: benefits, eligibility, a premium example and FAQs. Advice from an authorized LIC agent.`,
         crumbs: [HOME_CRUMB, { name: 'Plans', path: '/plans' }, { name: plan.title, path: `/plans/${route.id}` }],
         faqs: d.faqs,
+      }
+    }
+    case 'named': {
+      const n = findNamedPlan(route.slug)!
+      const cat = PLANS.find((p) => p.id === n.category)!
+      const short = n.name.replace('LIC’s ', '')
+      return {
+        path: `/plans/${n.slug}`,
+        title: `LIC ${short} Plan ${n.planNo}: Benefits, Eligibility & Details | ${SITE.name}`,
+        description: `LIC ${short} (Plan ${n.planNo}${n.oldPlanNo ? `, earlier ${n.oldPlanNo}` : ''}) in plain words: ${n.kind.toLowerCase()}, entry age, term, benefits and FAQs. Advice from an LIC agent in ${SITE.locality}.`,
+        crumbs: [HOME_CRUMB, { name: 'Plans', path: '/plans' }, { name: cat.title, path: `/plans/${cat.id}` }, { name: short, path: `/plans/${n.slug}` }],
+        faqs: n.faqs,
       }
     }
     case 'claims':
@@ -125,6 +140,7 @@ export function allRoutes(): Route[] {
     { name: 'home' },
     { name: 'plans' },
     ...PLANS.map((p) => ({ name: 'plan', id: p.id }) as Route),
+    ...NAMED_PLANS.map((n) => ({ name: 'named', slug: n.slug }) as Route),
     { name: 'claims' },
     { name: 'about' },
     { name: 'contact' },

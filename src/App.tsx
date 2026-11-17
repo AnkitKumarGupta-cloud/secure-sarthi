@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage'
 import { LegalPage } from './pages/LegalPage'
 import { NotFound } from './pages/NotFound'
 import { PlanPage } from './pages/PlanPage'
+import { NamedPlanPage } from './pages/NamedPlanPage'
 import { PlansIndex } from './pages/PlansIndex'
 import { MobileActionBar, ScrollProgress, WhatsAppFab } from './components/ui/Motion'
 import { RouterProvider, useRoute } from './lib/router'
@@ -23,6 +24,8 @@ function Page() {
       return <PlansIndex />
     case 'plan':
       return <PlanPage id={route.id} />
+    case 'named':
+      return <NamedPlanPage slug={route.slug} />
     case 'claims':
       return <ClaimsPage />
     case 'about':
@@ -38,7 +41,7 @@ function Page() {
 
 function Shell() {
   const route = useRoute()
-  const key = route.name === 'plan' ? `plan-${route.id}` : route.name === 'legal' ? `legal-${route.doc}` : route.name
+  const key = route.name === 'plan' ? `plan-${route.id}` : route.name === 'legal' ? `legal-${route.doc}` : route.name === 'named' ? `named-${route.slug}` : route.name
   return (
     <div className="relative overflow-x-clip">
       <Header />
