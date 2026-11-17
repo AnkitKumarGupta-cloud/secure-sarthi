@@ -9,7 +9,7 @@ import { Band, Faq, Note, PageHero, SectionHeading, SubNav } from '../components
 import { FadeUp, StaggerDiv, StaggerDl, StaggerLi, StaggerOl, StaggerUl } from '../components/ui/Reveal'
 import { cn } from '../lib/hooks'
 import { Link } from '../lib/router'
-import { AnnuityEstimator, MoneyBackSchedule } from './PlanTools'
+import { AmritbaalEstimator, AnnuityEstimator, MoneyBackSchedule } from './PlanTools'
 import { NamedPlanLinks } from './NamedPlanPage'
 import { namedPlansIn } from '../data/namedPlans'
 
@@ -227,11 +227,13 @@ export function PlanPage({ id }: { id: PlanId }) {
         <SectionHeading
           eyebrow={id === 'endowment' || id === 'child' ? 'Try it' : 'Illustration'}
           title={id === 'moneyback' ? 'See what comes back, and when' : id === 'pension' ? 'Estimate your income' : 'Estimate your premium'}
-          intro={id === 'moneyback' || id === 'pension' ? d.example.text : undefined}
+          intro={id === 'moneyback' || id === 'pension' || id === 'child' ? d.example.text : undefined}
         />
         <FadeUp className="mt-8">
-          {id === 'moneyback' || id === 'pension' ? (
-            <div className="rounded-[26px] border border-line bg-mist/70 p-4 sm:p-6">{id === 'moneyback' ? <MoneyBackSchedule /> : <AnnuityEstimator />}</div>
+          {id === 'moneyback' || id === 'pension' || id === 'child' ? (
+            <div className="rounded-[26px] border border-line bg-mist/70 p-4 sm:p-6">
+              {id === 'moneyback' ? <MoneyBackSchedule /> : id === 'pension' ? <AnnuityEstimator /> : <AmritbaalEstimator />}
+            </div>
           ) : (
             <PlanCalculator id={id} />
           )}

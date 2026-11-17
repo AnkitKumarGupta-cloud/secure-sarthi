@@ -174,7 +174,7 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
     ],
     example: {
       name: 'A sample case',
-      text: 'Meera is 35 and wants a wedding fund in 20 years. She picks a ₹10 lakh sum assured. This is an illustrative estimate, not LIC’s rate.',
+      text: 'Meera is 35 and wants a wedding fund in 20 years. She picks a ₹10 lakh sum assured. The estimate uses LIC’s published sample premiums for this plan.',
       calc: { age: 35, term: 20, amount: 10_00_000 },
       closing: 'At the end of 20 years Meera receives ₹10 lakh plus any bonuses declared. If she passes away earlier, her family receives the death benefit. Ask me for the exact quotation.',
     },
@@ -449,7 +449,7 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
     ],
     example: {
       name: 'Estimate the income',
-      text: 'Enter a purchase price and your age to see an illustrative yearly income. Actual annuity rates are set by LIC for each option, age and date, so ask me for an exact figure.',
+      text: 'Enter a purchase price and your age to estimate your yearly income from LIC’s published Jeevan Akshay VII rates. LIC sets the final rate on the day you buy, so ask me for the exact figure.',
     },
     tax: [
       'The annuity you receive is generally taxed as income in the year you receive it, at your applicable rate. Some purchases may qualify for a deduction, depending on current law.',
@@ -584,7 +584,7 @@ export const PLAN_DETAILS: Record<PlanId, PlanDetail> = {
     ],
     example: {
       name: 'A sample case',
-      text: 'Karan is 32 and has a newborn daughter. He wants a plan that matures when she is 18, with a ₹25 lakh sum assured. This is an illustrative estimate, not LIC’s rate.',
+      text: 'Amritbaal is priced on the child’s age, and you pay for only 5, 6 or 7 years, or once. Enter a sum assured to see the premium and what your child receives at 25, based on LIC’s own brochure example.',
       calc: { age: 32, term: 18, amount: 25_00_000 },
       closing: 'At 18, his daughter receives ₹25 lakh plus the guaranteed additions, which at ₹80 per ₹1,000 come to ₹2 lakh for every year the policy runs. Ask me for the exact quotation.',
     },

@@ -68,7 +68,7 @@ function sectionTarget(route: Route, section: string | null): { id: string; focu
     const focus: Record<string, string> = { products: 'h2', calculator: '#calc-age', about: 'h2', services: 'h2' }
     return { id: section, focus: focus[section] }
   }
-  if (route.name === 'plan' && section) return { id: `plan-${section}`, focus: section === 'calculator' ? '#calc-age, #mb-amount, #annuity-amount' : 'h2' }
+  if (route.name === 'plan' && section) return { id: `plan-${section}`, focus: section === 'calculator' ? '#calc-age, #mb-amount, #annuity-amount, #amritbaal-amount' : 'h2' }
   if (route.name === 'claims' && route.topic) return { id: `claim-${route.topic}`, focus: 'h2' }
   if (route.name === 'about' && section) return { id: `about-${section}`, focus: 'h2' }
   return null

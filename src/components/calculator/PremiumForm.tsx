@@ -167,7 +167,7 @@ export const PremiumForm = function PremiumForm({
         className,
       )}
     >
-      {!hidePlanPicker && (
+      {!hidePlanPicker && CALC_ORDER.length > 1 && (
       <div role="radiogroup" aria-label="Plan type" className="grid grid-cols-2 gap-1 rounded-[18px] bg-night/40 p-1 min-[420px]:grid-cols-4 min-[420px]:rounded-full">
         {CALC_ORDER.map((id, i) => {
           const selected = plan === id
@@ -333,7 +333,7 @@ export function EstimatePanel({ calc, className }: { calc: PremiumCalculator; cl
             <p className="mt-3 flex gap-1.5 text-[0.78rem] leading-snug text-ink-soft">
               <Info className="mt-[1px] h-3.5 w-3.5 shrink-0" aria-hidden />
               <span>
-                {result.note} A rough estimate, not LIC’s rate. For the exact premium, ask me for a quotation.
+                {result.note} Close to LIC’s rates, but not a quotation. For the exact premium, ask me.
               </span>
             </p>
             <a
